@@ -3,137 +3,117 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Disable indexing -->
-  <meta name="robots" content="noindex, nofollow">
-  <!-- https://script.google.com/macros/s/AKfycbyiX7ODqFuPWX9Qa3i1IMmhvM_lHUmn-yC3r1c0k_UK-jwpo-0ZNBFZr78lSFzAdMZM4A/exec -->
-  <title>Veloras Music</title>
+  <title>Veloras Landing</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * { margin:0; padding:0; box-sizing:border-box; }
     body {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: center;
-      background: #fff;
-      color: #000;
-      font-family: 'Roboto', sans-serif;
-      text-align: center;
-      padding: 2rem 1rem;
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-start;
+      align-items:center;
+      background:#fff;
+      color:#000;
+      font-family:'Roboto', sans-serif;
+      text-align:center;
+      padding:2rem 1rem;
     }
+    header { width:100%; display:flex; justify-content:center; margin-bottom:2rem; }
+    .logo img { width:100%; max-width:600px; height:auto; }
 
-    /* Top Logo Banner */
-    header {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      margin-bottom: 2rem;
-    }
-    .logo img {
-      width: 100%;
-      max-width: 600px; /* Adjust max width to suit your design */
-      height: auto;
-    }
+    .hero { display:flex; flex-direction:column; justify-content:center; align-items:center; max-width:800px; margin-bottom:2rem; }
+    .hero h1 { font-family:'Playfair Display', serif; font-size:3rem; margin-bottom:1rem; }
+    .hero p { font-size:1.25rem; line-height:1.6; }
 
-    /* Hero Section */
-    .hero {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      max-width: 800px;
-      margin-bottom: 2rem;
-    }
-    .hero h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 3rem;
-      margin-bottom: 1rem;
-    }
-    .hero p {
-      font-size: 1.25rem;
-      line-height: 1.6;
-    }
+    .subscribe-section { display:flex; flex-direction:column; align-items:center; gap:1rem; }
+    .subscribe-text { font-size:1rem; max-width:600px; line-height:1.5; margin-bottom:0.5rem; }
 
-    /* Subscription Section */
-    .subscribe-section {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1rem;
-    }
-    .subscribe-text {
-      font-size: 1rem;
-      max-width: 600px;
-      line-height: 1.5;
-      margin-bottom: 0.5rem;
-    }
-
-    /* Inline subscribe form */
     .subscribe-form {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      width: 100%;
-      max-width: 600px;
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:0.5rem;
+      width:100%;
+      max-width:600px;
     }
     .subscribe-form input[type="email"] {
-      flex: 1 1 auto;
-      min-width: 200px;
-      padding: 0.75rem 1rem;
-      border: 2px solid #000;
-      font-size: 1rem;
-      outline: none;
+      flex:1 1 auto;
+      min-width:200px;
+      padding:0.75rem 1rem;
+      border:2px solid #000;
+      font-size:1rem;
+      outline:none;
     }
     .subscribe-form button {
-      padding: 0.75rem 2rem;
-      border: 2px solid #000;
-      background: transparent;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: all 0.3s;
-      white-space: nowrap;
+      padding:0.75rem 2rem;
+      border:2px solid #000;
+      background:transparent;
+      font-size:1rem;
+      cursor:pointer;
+      transition:all 0.3s;
+      white-space:nowrap;
     }
-    .subscribe-form button:hover {
-      background: #000;
-      color: #fff;
-    }
+    .subscribe-form button:hover { background:#000; color:#fff; }
 
-    @media (max-width: 600px) {
-      .hero h1 { font-size: 2rem; }
-      .hero p { font-size: 1rem; }
-      .subscribe-text { font-size: 0.9rem; }
-      .subscribe-form {
-        flex-direction: column;
-      }
-      .subscribe-form button {
-        width: 100%;
-      }
+    #success-msg { display:none; color:green; font-weight:bold; }
+
+    @media (max-width:600px){
+      .hero h1 { font-size:2rem; }
+      .hero p { font-size:1rem; }
+      .subscribe-text { font-size:0.9rem; }
+      .subscribe-form { flex-direction:column; }
+      .subscribe-form button { width:100%; }
     }
   </style>
 </head>
 <body>
-  <!-- Top Logo Banner -->
+  <!-- Logo Banner -->
   <header>
-    <div class="logo">
-      <img src="veloras_logo.png" alt="Veloras Logo">
-    </div>
+    <div class="logo"><img src="veloras-logo.png" alt="Veloras Logo"></div>
   </header>
 
   <!-- Hero Section -->
   <section class="hero">
+    <h1>Veloras</h1>
     <p>She moves through time, through light, through sound.<br>Between echoes and ink, she exists.</p>
   </section>
 
   <!-- Subscription Section -->
   <section class="subscribe-section">
-    <p class="subscribe-text">Be first to witness the melodies before they unfold.</p>
-    <form class="subscribe-form">
-      <input type="email" placeholder="Your email address" required>
+    <p class="subscribe-text">Be first to witness the melodies before they unfold.<br>Subscribe for music, videos, events and more.</p>
+    <form id="subscribe-form" class="subscribe-form">
+      <input type="email" name="email" placeholder="Your email address" required>
       <button type="submit">Subscribe</button>
     </form>
-    <p>Subscribe for music, videos, events and more.</p>
+    <p id="success-msg">Thank you for subscribing!</p>
   </section>
+
+  <!-- AJAX Script to post to Google Sheets -->
+  <script>
+    const form = document.getElementById('subscribe-form');
+    const successMsg = document.getElementById('success-msg');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = form.email.value;
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbyiX7ODqFuPWX9Qa3i1IMmhvM_lHUmn-yC3r1c0k_UK-jwpo-0ZNBFZr78lSFzAdMZM4A/exec'; // <-- Replace with your Google Apps Script URL
+
+      try {
+        const res = await fetch(scriptURL, {
+          method: 'POST',
+          body: new URLSearchParams({ email })
+        });
+        if (res.ok) {
+          successMsg.style.display = 'block';
+          form.reset();
+        } else {
+          alert('Submission failed. Please try again.');
+        }
+      } catch (err) {
+        alert('Error: ' + err.message);
+      }
+    });
+  </script>
 </body>
 </html>
