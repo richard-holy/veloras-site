@@ -2,60 +2,137 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Veloras</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <!-- Disable indexing -->
   <meta name="robots" content="noindex, nofollow">
-
+  <title>Veloras Music</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
   <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      margin: 0;
-      background: #0a0a0a;
-      color: #eaeaea;
-      font-family: Arial, sans-serif;
+      min-height: 100vh;
       display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
       align-items: center;
-      justify-content: center;
-      height: 100vh;
+      background: #fff;
+      color: #000;
+      font-family: 'Roboto', sans-serif;
       text-align: center;
+      padding: 2rem 1rem;
     }
-    .container {
-      max-width: 500px;
+
+    /* Top Logo Banner */
+    header {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2rem;
     }
-    h1 {
-      font-weight: 300;
-      letter-spacing: 2px;
+    .logo img {
+      width: 100%;
+      max-width: 600px; /* Adjust max width to suit your design */
+      height: auto;
     }
-    input {
-      padding: 10px;
-      width: 70%;
-      margin-top: 20px;
-      background: #111;
-      border: 1px solid #333;
-      color: #fff;
+
+    /* Hero Section */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      max-width: 800px;
+      margin-bottom: 2rem;
     }
-    button {
-      padding: 10px 20px;
-      margin-top: 10px;
-      background: #222;
-      color: #fff;
-      border: 1px solid #444;
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    .hero p {
+      font-size: 1.25rem;
+      line-height: 1.6;
+    }
+
+    /* Subscription Section */
+    .subscribe-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+    .subscribe-text {
+      font-size: 1rem;
+      max-width: 600px;
+      line-height: 1.5;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Inline subscribe form */
+    .subscribe-form {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      width: 100%;
+      max-width: 600px;
+    }
+    .subscribe-form input[type="email"] {
+      flex: 1 1 auto;
+      min-width: 200px;
+      padding: 0.75rem 1rem;
+      border: 2px solid #000;
+      font-size: 1rem;
+      outline: none;
+    }
+    .subscribe-form button {
+      padding: 0.75rem 2rem;
+      border: 2px solid #000;
+      background: transparent;
+      font-size: 1rem;
       cursor: pointer;
+      transition: all 0.3s;
+      white-space: nowrap;
+    }
+    .subscribe-form button:hover {
+      background: #000;
+      color: #fff;
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 2rem; }
+      .hero p { font-size: 1rem; }
+      .subscribe-text { font-size: 0.9rem; }
+      .subscribe-form {
+        flex-direction: column;
+      }
+      .subscribe-form button {
+        width: 100%;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Veloras</h1>
-    <p>A journey to find identity and joy in sound.</p>
+  <!-- Top Logo Banner -->
+  <header>
+    <div class="logo">
+      <img src="veloras-logo.png" alt="Veloras Logo">
+    </div>
+  </header>
 
-    <!-- Replace action with your email service -->
-    <form action="https://formspree.io/f/YOUR_ID" method="POST">
-      <input type="email" name="email" placeholder="Your email" required>
-      <br>
-      <button type="submit">Join</button>
+  <!-- Hero Section -->
+  <section class="hero">
+    <p>She moves through time, through light, through sound.<br>Between echoes and ink, she exists.</p>
+  </section>
+
+  <!-- Subscription Section -->
+  <section class="subscribe-section">
+    <p class="subscribe-text">Be first to witness the melodies before they unfold.</p>
+    <form class="subscribe-form">
+      <input type="email" placeholder="Your email address" required>
+      <button type="submit">Subscribe</button>
     </form>
-  </div>
+    <p>Subscribe for music, videos, events and more.</p>
+  </section>
 </body>
 </html>
