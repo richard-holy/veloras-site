@@ -4,151 +4,304 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Veloras Music</title>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
 <style>
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body {
-    min-height:100vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:flex-start;
-    align-items:center;
-    background:#fff;
-    color:#000;
-    font-family:'Roboto', sans-serif;
-    text-align:center;
-    padding:1rem 1rem;
-    overflow-x:hidden;
-  }
-  header { width:100%; display:flex; justify-content:center; }
-  .logo img { width:100%; max-width:800px; height:auto; }
+* { margin:0; padding:0; box-sizing:border-box; }
 
-  .hero { display:flex; flex-direction:column; justify-content:center; align-items:center; max-width:800px; margin-bottom:2rem; opacity:0; animation:fadeIn 2s forwards 1s; font-family: "Dancing Script", cursive; }
-  .hero p { font-size:2rem; line-height:1.6; padding: 1em}
+/* Background (striped) */
+body {
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+  background: repeating-linear-gradient(
+    to bottom,
+    #fafafa,
+    #fafafa 2px,
+    #ffffff 2px,
+    #ffffff 8px
+  );
+  font-family:'Roboto', sans-serif;
+  padding: 2rem 1rem;
+}
 
-  .subscribe-section { display:flex; flex-direction:column; align-items:center; gap:1rem; opacity:0; animation:fadeIn 2s forwards 3s; }
-  .subscribe-text { font-size:1rem; max-width:600px; line-height:1.5; margin-bottom:0.5rem; }
+/* White content box */
+.page {
+  width: 100%;
+  max-width: 900px;
+  background: #fff;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+  border-radius: 6px;
+}
 
-  .subscribe-form {
-    display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
-    gap:0.5rem;
-    width:100%;
-    max-width:600px;
-  }
-  .subscribe-form input[type="email"] {
-    flex:1 1 auto;
-    min-width:200px;
-    padding:0.75rem 1rem;
-    border:2px solid #000;
-    font-size:1rem;
-    outline:none;
-  }
-  .subscribe-form button {
-    padding:0.75rem 2rem;
-    border:2px solid #000;
-    background:transparent;
-    font-size:1rem;
-    cursor:pointer;
-    transition:all 0.3s;
-    white-space:nowrap;
-  }
-  .subscribe-form button:hover { background:#000; color:#fff; }
-  .footer {
-    padding:2rem 2rem;
-  }
-  
-  /* 15. Vinyl groove lines */
-  .separator-vinyl {
-    max-width: 650px;
-    width: 80%;
-    margin: 1rem auto;
-    height: 6px;
-    background: repeating-linear-gradient(
-      to right,
-      #000,
-      #000 1px,
-      transparent 1px,
-      transparent 3px
-    );
-  }
+/* Layout */
+header { width:100%; display:flex; justify-content:center; }
+.logo img { width:100%; max-width:800px; height:auto; }
 
-  #success-msg { display:none; color:purple; font-weight:bold; opacity:0; transition:opacity 0.6s; }
+/* Hero */
+.hero {
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  max-width:800px;
+  margin-bottom:2rem;
+  opacity:0;
+  animation:fadeIn 2s forwards 1s;
+  font-family: "Dancing Script", cursive;
+}
+.hero p {
+  font-size:2rem;
+  line-height:1.6;
+  padding:1em;
+  text-align: center;
+}
 
-  @keyframes fadeIn {
-    to { opacity:1; }
-  }
+/* Subscribe */
+.subscribe-section {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  opacity:0;
+  animation:fadeIn 2s forwards 3s;
+}
 
-  @media (max-width:600px){
-    .hero h1 { font-size:2rem; }
-    .hero p { font-size:1rem; }
-    .subscribe-text { font-size:0.9rem; }
-    .subscribe-form { flex-direction:column; }
-    .subscribe-form button { width:100%; }
-  }
+.subscribe-text {
+  font-size:1rem;
+  max-width:600px;
+  line-height:1.5;
+  margin-bottom:0.5rem;
+}
+
+.subscribe-form {
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:0.5rem;
+  width:100%;
+  max-width:600px;
+}
+
+.subscribe-form input[type="email"] {
+  min-width:200px;
+  padding:0.75rem 1rem;
+  border:2px solid #000;
+  font-size:1rem;
+  outline:none;
+}
+
+.subscribe-form button {
+  padding:0.75rem 2rem;
+  border:2px solid #000;
+  background:transparent;
+  font-size:1rem;
+  cursor:pointer;
+  transition:all 0.3s;
+  white-space:nowrap;
+}
+
+.subscribe-form button:hover {
+  background:#000;
+  color:#fff;
+}
+
+/* Vinyl separator */
+.separator-vinyl {
+  max-width: 650px;
+  width: 80%;
+  margin: 1rem auto;
+  height: 6px;
+  background: repeating-linear-gradient(
+    to right,
+    #000,
+    #000 1px,
+    transparent 1px,
+    transparent 3px
+  );
+}
+
+/* Success message */
+#success-msg {
+  display:none;
+  color:purple;
+  font-weight:bold;
+  opacity:0;
+  transition:opacity 0.6s;
+}
+
+/* Footer */
+footer {
+  margin-top: 3rem;
+  padding: 1rem 0;
+  text-align: center;
+}
+
+.socials {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:2rem;
+  padding-bottom:2em;
+}
+
+/* Fix: enlarge icons without overflow */
+.socials a {
+  display:inline-flex;
+  justify-content:center;
+  align-items:center;
+  width:42px;   /* 28px * 1.5 */
+  height:42px;  /* 28px * 1.5 */
+  opacity:0.7;
+  transition:opacity 0.3s, transform 0.3s;
+}
+
+.socials img {
+  width:100%;
+  height:100%;
+  object-fit:contain;
+}
+
+.socials a:hover {
+  opacity:1;
+  transform:translateY(-2px);
+}
+
+/* Animation */
+@keyframes fadeIn {
+  to { opacity:1; }
+}
+
+/* Responsive */
+@media (max-width:600px){
+  .hero p { font-size:1.2rem; }
+  .subscribe-text { font-size:0.9rem; }
+  .subscribe-form { flex-direction:column; }
+  .subscribe-form button { width:100%; }
+}
 </style>
 </head>
+
 <body>
 
-<!-- Logo Banner -->
+<div class="page">
+
+<!-- Logo -->
 <header>
-  <div class="logo"><img src="veloras_logo_bw_trans.png" alt="Veloras Logo"></div>
+  <div class="logo">
+    <img src="veloras_logo_bw_trans.png" alt="Veloras Logo">
+  </div>
 </header>
 
-<!-- separator -->
+<!-- Separator -->
 <div class="separator-vinyl"></div>
 
-<!-- Hero Section -->
+<!-- Hero -->
 <section class="hero">
-  <p>She moves through time, through light, through sound.<br>Between echoes and ink, she exists.</p>
+  <p>
+    She moves through time, through light, through sound.<br>
+    Between echoes and ink, she exists.
+  </p>
 </section>
 
-<!-- Subscription Section -->
+<!-- Subscribe -->
 <section class="subscribe-section">
-  <p class="subscribe-text">Be first to witness the melodies before they unfold.<br>Subscribe for music, videos, events and more.</p>
+  <p class="subscribe-text">
+    Be first to witness the melodies before they unfold.<br>
+    Subscribe for music, videos, events and more.
+  </p>
+
   <form id="subscribe-form" class="subscribe-form">
     <input type="email" name="email" placeholder="Your email address" required>
-    <button type="submit" class="g-recaptcha" 
-            data-sitekey="6LfdbJAsAAAAAFfYGKUgpOJFnItFvVjmJGKMD9ZN" 
-            data-callback="onSubmit" 
-            data-size="invisible">Subscribe</button>
+    <button type="submit">Subscribe</button>
   </form>
-  <p id="success-msg">&#x2665; &#x2665; &#x2665; Thank you for subscribing &#x2665; &#x2665; &#x2665;</p>
+
+  <p id="success-msg">
+    &#x2665; &#x2665; &#x2665; Thank you for subscribing &#x2665; &#x2665; &#x2665;
+  </p>
 </section>
-<p class="footer">
- <a href="mailto:music@veloras.art">music@veloras.art</a>
-</p>
+
+<!-- Footer -->
+<footer>
+  <div class="socials">
+    <a href="#" target="_blank"><img src="youtube.svg" alt="YouTube"></a>
+    <a href="#" target="_blank"><img src="tiktok.svg" alt="TikTok"></a>
+    <a href="#" target="_blank"><img src="instagram.svg" alt="Instagram"></a>
+    <a href="#" target="_blank"><img src="spotify.svg" alt="Spotify"></a>
+    <a href="#" target="_blank"><img src="facebook.svg" alt="Facebook"></a>
+  </div>
+  <a href="mailto:music@veloras.art">music@veloras.art</a>
+</footer>
+
+</div>
+
+<div id="recaptcha-container"></div>
 
 <script>
-  const form = document.getElementById('subscribe-form');
-  const successMsg = document.getElementById('success-msg');
-  const scriptURL = 'https://script.google.com/macros/s/AKfycbzf1Qoz4yL6gMAulP9gB6Cuog1Enq7dCV5V2FqDqs4kScaGZYJZydnUM81sdyzmqN5chw/exec'; // Replace with your Apps Script /exec URL
+const form = document.getElementById('subscribe-form');
+const successMsg = document.getElementById('success-msg');
+const button = form.querySelector("button");
 
-  function onSubmit(token) {
-    const email = form.email.value;
-    fetch(scriptURL, {
-      method: 'POST',
-      body: new URLSearchParams({ email, 'g-recaptcha-response': token })
-    }).then(res => {
-      if(res.ok) {
-        successMsg.style.display = 'block';
-        successMsg.style.opacity = 1;
-        form.reset();
-        grecaptcha.reset();
-      } else {
-        alert('Submission failed. Please try again.');
-      }
-    }).catch(err => alert('Error: '+err.message));
+const scriptURL = 'https://script.google.com/macros/s/AKfycbzf1Qoz4yL6gMAulP9gB6Cuog1Enq7dCV5V2FqDqs4kScaGZYJZydnUM81sdyzmqN5chw/exec';
+
+let recaptchaWidget;
+
+// Render invisible CAPTCHA manually
+window.onload = function () {
+  recaptchaWidget = grecaptcha.render('recaptcha-container', {
+    'sitekey': '6LfdbJAsAAAAAFfYGKUgpOJFnItFvVjmJGKMD9ZN',
+    'size': 'invisible',
+    'callback': onSubmit
+  });
+};
+
+form.addEventListener('submit', function(e){
+  e.preventDefault();
+
+  // ✅ Now HTML5 validation works
+  if (!form.checkValidity()) {
+    form.reportValidity();
+    return;
   }
 
-  form.addEventListener('submit', function(e){
-    e.preventDefault();
-    grecaptcha.execute(); // triggers invisible captcha
+  // Trigger CAPTCHA only if valid
+  grecaptcha.execute(recaptchaWidget);
+});
+
+function onSubmit(token) {
+  const email = form.email.value;
+
+  button.disabled = true;
+  button.innerText = "Sending...";
+
+  fetch(scriptURL, {
+    method: 'POST',
+    body: new URLSearchParams({
+      email,
+      'g-recaptcha-response': token
+    })
+  }).then(res => {
+    if(res.ok) {
+      successMsg.style.display = 'block';
+      successMsg.style.opacity = 1;
+      form.reset();
+    } else {
+      alert('Submission failed. Please try again.');
+    }
+  }).catch(err => {
+    alert('Error: ' + err.message);
+  }).finally(() => {
+    button.disabled = false;
+    button.innerText = "Subscribe";
+    grecaptcha.reset(recaptchaWidget);
   });
+}
 </script>
 
 </body>
