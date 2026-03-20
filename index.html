@@ -4,7 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Veloras Music</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
@@ -18,17 +20,16 @@
     color:#000;
     font-family:'Roboto', sans-serif;
     text-align:center;
-    padding:2rem 1rem;
+    padding:1rem 1rem;
     overflow-x:hidden;
   }
-  header { width:100%; display:flex; justify-content:center; margin-bottom:2rem; }
-  .logo img { width:100%; max-width:600px; height:auto; opacity:0; animation:fadeIn 1s forwards 0.3s; }
+  header { width:100%; display:flex; justify-content:center; }
+  .logo img { width:100%; max-width:800px; height:auto; }
 
-  .hero { display:flex; flex-direction:column; justify-content:center; align-items:center; max-width:800px; margin-bottom:2rem; opacity:0; animation:fadeIn 1s forwards 0.6s; }
-  .hero h1 { font-family:'Playfair Display', serif; font-size:3rem; margin-bottom:1rem; }
-  .hero p { font-size:1.25rem; line-height:1.6; }
+  .hero { display:flex; flex-direction:column; justify-content:center; align-items:center; max-width:800px; margin-bottom:2rem; opacity:0; animation:fadeIn 2s forwards 1s; font-family: "Dancing Script", cursive; }
+  .hero p { font-size:2rem; line-height:1.6; padding: 1em}
 
-  .subscribe-section { display:flex; flex-direction:column; align-items:center; gap:1rem; opacity:0; animation:fadeIn 1s forwards 1s; }
+  .subscribe-section { display:flex; flex-direction:column; align-items:center; gap:1rem; opacity:0; animation:fadeIn 2s forwards 3s; }
   .subscribe-text { font-size:1rem; max-width:600px; line-height:1.5; margin-bottom:0.5rem; }
 
   .subscribe-form {
@@ -60,8 +61,23 @@
   .footer {
     padding:2rem 2rem;
   }
+  
+  /* 15. Vinyl groove lines */
+  .separator-vinyl {
+    max-width: 650px;
+    width: 80%;
+    margin: 1rem auto;
+    height: 6px;
+    background: repeating-linear-gradient(
+      to right,
+      #000,
+      #000 1px,
+      transparent 1px,
+      transparent 3px
+    );
+  }
 
-  #success-msg { display:none; color:green; font-weight:bold; opacity:0; transition:opacity 0.6s; }
+  #success-msg { display:none; color:purple; font-weight:bold; opacity:0; transition:opacity 0.6s; }
 
   @keyframes fadeIn {
     to { opacity:1; }
@@ -80,8 +96,11 @@
 
 <!-- Logo Banner -->
 <header>
-  <div class="logo"><img src="veloras_logo.png" alt="Veloras Logo"></div>
+  <div class="logo"><img src="veloras_logo_bw_trans.png" alt="Veloras Logo"></div>
 </header>
+
+<!-- separator -->
+<div class="separator-vinyl"></div>
 
 <!-- Hero Section -->
 <section class="hero">
@@ -98,7 +117,7 @@
             data-callback="onSubmit" 
             data-size="invisible">Subscribe</button>
   </form>
-  <p id="success-msg">Thank you for subscribing!</p>
+  <p id="success-msg">&#x2665; &#x2665; &#x2665; Thank you for subscribing &#x2665; &#x2665; &#x2665;</p>
 </section>
 <p class="footer">
  <a href="mailto:music@veloras.art">music@veloras.art</a>
