@@ -207,6 +207,31 @@ footer {
   transition:opacity 0.3s, transform 0.3s;
 }
 
+.mid-image {
+  width: 100%;
+  max-width: 800px;
+  margin: 2rem auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  animation: fadeIn 2s forwards 2s; /* appears between hero and subscribe */
+}
+
+.mid-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 4px;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+/* Optional subtle interaction */
+.mid-image img:hover {
+  transform: scale(1.02);
+  opacity: 0.95;
+}
+
 .socials img {
   width:100%;
   height:100%;
@@ -265,6 +290,13 @@ footer {
     She moves through time, through light, through sound.<br>
     Between echoes and ink, she exists.
   </p>
+</section>
+
+<!-- Mid Image Section -->
+<section class="mid-image">
+  <a href="https://www.youtube.com/watch?v=G3b_p3u9IKg" target="_blank">
+    <img src="veloras-yt-thumb.png" alt="Veloras – Cryptic Calls (Official Audio)">
+  </a>
 </section>
 
 <!-- Subscribe -->
