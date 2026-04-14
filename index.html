@@ -208,22 +208,20 @@ footer {
 }
 
 .mid-image {
-  width: 100%;
-  max-width: 800px;
-  margin: 2rem auto;
+  width: 70%;              /* 👈 shrink to 70% */
+  max-width: 560px;        /* optional: 70% of your 800px layout */
+  margin: 2rem auto;       /* 👈 keeps it centered */
   display: flex;
   justify-content: center;
   align-items: center;
   opacity: 0;
-  animation: fadeIn 2s forwards 2s; /* appears between hero and subscribe */
+  animation: fadeIn 2s forwards 2s;
 }
 
 .mid-image img {
   width: 100%;
   height: auto;
   display: block;
-  border-radius: 4px;
-  transition: transform 0.4s ease, opacity 0.4s ease;
 }
 
 /* Optional subtle interaction */
