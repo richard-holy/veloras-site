@@ -232,6 +232,7 @@ footer {
   width: 100%;
   height: auto;
   display: block;
+  transition: opacity 0.8s ease-in-out;
 }
 
 /* Optional subtle interaction */
@@ -275,6 +276,10 @@ footer {
   .subscribe-form { flex-direction:column; }
   .subscribe-form button { width:100%; }
 }
+
+#slideshow-image {
+  opacity: 1;
+}
 </style>
 </head>
 
@@ -317,8 +322,13 @@ footer {
 
 <!-- Mid Image Section -->
 <section class="mid-image">
-  <a href="https://www.youtube.com/watch?v=G3b_p3u9IKg" target="_blank">
-    <img src="veloras-yt-thumb-pm.png" loading="lazy" alt="Veloras – Cryptic Calls (Official Audio)">
+  <a id="slideshow-link" href="#" target="_blank">
+    <img
+      id="slideshow-image"
+      src=""
+      loading="lazy"
+      alt=""
+    >
   </a>
 </section>
 
@@ -420,6 +430,69 @@ function onSubmit(token) {
     grecaptcha.reset(recaptchaWidget);
   });
 }
+
+/* ===========================
+   Veloras Slideshow
+   =========================== */
+
+const slideShow = [
+  {
+    image: "veloras-yt-thumb-pm.png",
+    alt: "Cryptic Calls",
+    link: "https://www.youtube.com/watch?v=G3b_p3u9IKg"
+  },
+  {
+    image: "spotify-banner.jpg",
+    alt: "Listen on Spotify",
+    link: "https://open.spotify.com/artist/12IwDQIQyiaKq8hWHzaOsU"
+  },
+  {
+    image: "instagram-banner.jpg",
+    alt: "Follow on Instagram",
+    link: "https://www.instagram.com/velorasmusic"
+  },
+  {
+    image: "youtube-channel-banner.jpg",
+    alt: "Veloras YouTube Channel",
+    link: "https://www.youtube.com/@VelorasMusic"
+  }
+];
+
+let currentSlide = 0;
+
+const slideImage = document.getElementById("slideshow-image");
+const slideLink = document.getElementById("slideshow-link");
+
+function showSlide(index) {
+  const slide = slideShow[index];
+
+  slideImage.src = slide.image;
+  slideImage.alt = slide.alt;
+  slideLink.href = slide.link;
+}
+
+function nextSlide() {
+  slideImage.style.opacity = 0;
+
+  setTimeout(() => {
+    currentSlide = (currentSlide + 1) % slideShow.length;
+    showSlide(currentSlide);
+    slideImage.style.opacity = 1;
+  }, 800);
+}
+
+showSlide(currentSlide);
+
+let slideTimer = setInterval(nextSlide, 5000);
+
+slideImage.addEventListener("mouseenter", () => {
+  clearInterval(slideTimer);
+});
+
+slideImage.addEventListener("mouseleave", () => {
+  slideTimer = setInterval(nextSlide, 5000);
+});
+  
 </script>
 
 </body>
