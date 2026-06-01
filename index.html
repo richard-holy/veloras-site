@@ -466,7 +466,7 @@ const slideLink = document.getElementById("slideshow-link");
 function showSlide(index) {
   const slide = slideShow[index];
 
-  slideImage.src = slide.image;
+  slideImage.src = "slideshow/" + slide.image;
   slideImage.alt = slide.alt;
   slideLink.href = slide.link;
 }
