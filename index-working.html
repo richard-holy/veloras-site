@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Veloras | Journey Through Music</title>
+
+<meta name="description" content="Veloras creates cinematic, emotional soundscapes blending music, visuals, and atmosphere. Discover new releases, videos, and upcoming events.">
+<meta name="keywords" content="Veloras, cinematic music, ambient music, electronic music, soundtrack, artistic audio">
+<meta name="author" content="Veloras">
+<meta name="robots" content="index, follow">
+<meta http-equiv="content-language" content="en">
+
+<link rel="canonical" href="https://www.veloras.art/">
+
+<!-- Open Graph (Facebook, Discord, etc.) -->
+<meta property="og:title" content="Veloras Music">
+<meta property="og:description" content="Cinematic soundscapes and artistic audio experiences.">
+<meta property="og:image" content="https://www.veloras.art/preview.png">
+<meta property="og:url" content="https://www.veloras.art/">
+<meta property="og:type" content="website">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Veloras Music">
+<meta name="twitter:description" content="Cinematic soundscapes and artistic audio.">
+<meta name="twitter:image" content="https://www.veloras.art/preview.png">
+
+<!-- Favicon -->
+<link rel="icon" href="favicon.png" type="image/x-icon">
+<!--  <link rel="apple-touch-icon" href="apple-touch-icon.png">  -->
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+
+<!-- Structured Data (SEO boost) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MusicGroup",
+  "name": "Veloras",
+  "url": "https://www.veloras.art",
+  "genre": ["Ambient", "Cinematic", "Electronic"],
+  "sameAs": [
+    "https://www.youtube.com/@VelorasMusic",
+    "https://www.tiktok.com/@veloras_",
+    "https://www.instagram.com/velorasmusic"
+  ]
+}
+</script>
+
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+
+/* Background (striped) */
+body {
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+  background: repeating-linear-gradient(
+    to bottom,
+    #fafafa,
+    #fafafa 2px,
+    #ffffff 2px,
+    #ffffff 8px
+  );
+  font-family:'Roboto', sans-serif;
+  padding: 2rem 1rem;
+}
+
+/* White content box */
+.page {
+  width: 100%;
+  max-width: 900px;
+  background: #fff;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+  border-radius: 6px;
+  background-color: #fffdee;
+}
+
+/* Layout */
+header { width:100%; display:flex; justify-content:center; }
+.logo img { width:100%; max-width:800px; height:auto; }
+
+.visually-soft {
+  font-size: 0.8rem;
+  opacity: 0.8;
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+/* Hero */
+.hero {
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  max-width:800px;
+  margin-bottom:2rem;
+  opacity:0;
+  animation:fadeIn 2s forwards 1s;
+  font-family: "Dancing Script", cursive;
+}
+.hero p {
+  font-size:2rem;
+  line-height:1.6;
+  padding:1em;
+  text-align: center;
+}
+
+/* Subscribe */
+.subscribe-section {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  opacity:0;
+  animation:fadeIn 2s forwards 3s;
+}
+
+.subscribe-text {
+  font-size:0.9rem;
+  max-width:600px;
+  line-height:1.5;
+  margin-bottom:0.5rem;
+  text-align: center;
+}
+
+.subscribe-form {
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:0.5rem;
+  width:100%;
+  max-width:600px;
+}
+
+.subscribe-form input[type="email"] {
+  min-width:200px;
+  padding:0.75rem 1rem;
+  border:2px solid #000;
+  font-size:1rem;
+  outline:none;
+  border-color: lightgray;
+}
+
+.subscribe-form button {
+  padding:0.75rem 2rem;
+  border:2px solid #000;
+  background:transparent;
+  font-size:1rem;
+  cursor:pointer;
+  transition:all 0.3s;
+  white-space:nowrap;
+  border-color: lightgray;
+}
+
+.subscribe-form button:hover {
+  background:#000;
+  color:#fff;
+}
+
+/* Vinyl separator */
+.separator-vinyl {
+  max-width: 650px;
+  width: 80%;
+  margin: 1rem auto;
+  height: 6px;
+  background: repeating-linear-gradient(
+    to right,
+    #000,
+    #000 1px,
+    transparent 1px,
+    transparent 3px
+  );
+}
+
+/* Success message */
+#success-msg {
+  margin-top: 1em;
+  display:none;
+  color:darkred;
+  font-weight:bold;
+  opacity:0;
+  transition:opacity 0.6s;
+}
+
+/* Footer */
+footer {
+  margin-top: 3rem;
+  padding: 1rem 0;
+  text-align: center;
+}
+
+.socials {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:2rem;
+  padding-bottom:2em;
+}
+
+/* Fix: enlarge icons without overflow */
+.socials a {
+  display:inline-flex;
+  justify-content:center;
+  align-items:center;
+  width:42px;   /* 28px * 1.5 */
+  height:42px;  /* 28px * 1.5 */
+  opacity:0.7;
+  transition:opacity 0.3s, transform 0.3s;
+}
+
+.mid-image {
+  width: 70%;              /* 👈 shrink to 70% */
+  max-width: 560px;        /* optional: 70% of your 800px layout */
+  margin: 2rem auto;       /* 👈 keeps it centered */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  animation: fadeIn 2s forwards 2s;v=MnokXSH3wmU
+}
+
+.mid-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: opacity 0.8s ease-in-out;
+}
+
+/* Optional subtle interaction */
+.mid-image img:hover {
+  transform: scale(1.02);
+  opacity: 0.95;
+}
+
+.socials img {
+  width:100%;
+  height:100%;
+  object-fit:contain;
+}
+
+.piano-divider {
+  width: 100%;
+  margin-top: 2rem;
+  overflow: hidden;
+}
+
+.piano-divider img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.socials a:hover {
+  opacity:1;
+  transform:translateY(-2px);
+}
+
+/* Animation */
+@keyframes fadeIn {
+  to { opacity:1; }
+}
+
+/* Responsive */
+@media (max-width:600px){
+  .hero p { font-size:1.2rem; }
+  .subscribe-text { font-size:0.8rem; }
+  .subscribe-form { flex-direction:column; }
+  .subscribe-form button { width:100%; }
+}
+
+#slideshow-image {
+  opacity: 1;
+}
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+<!-- Logo -->
+<header>
+  <div class="logo">
+    <img src="veloras_logo_bw_trans_with_her.png" alt="Veloras Logo">
+  </div>
+</header>
+  
+<!-- Separator -->
+<div class="separator-vinyl"></div>
+
+<h1 class="visually-soft">
+  Veloras – Music & Art
+</h1>
+ 
+<p class="visually-soft">
+  Multi-genre music project by Veloras. 
+</p>
+
+<p class="visually-soft">
+  Now on Youtube, Spotify, iTunes...
+</p>
+
+<!-- Separator -->
+<div class="separator-vinyl"></div>
+   
+<!-- Hero -->
+<section class="hero">
+  <p>
+    She moves through time, through light, through sound.<br>
+    Between echoes and ink, she exists.
+  </p>
+</section>
+
+<!-- Mid Image Section -->
+<section class="mid-image">
+  <a id="slideshow-link" href="#" target="_blank">
+    <img
+      id="slideshow-image"
+      src=""
+      loading="lazy"
+      alt=""
+    >
+  </a>
+</section>
+
+<!-- Subscribe -->
+<section class="subscribe-section">
+  <p class="subscribe-text">
+    Be first to witness the melodies before they unfold.<br>
+    Subscribe for music, videos, events and more.
+  </p>
+
+  <form id="subscribe-form" class="subscribe-form">
+    <input type="email" name="email" placeholder="Your email address" required>
+    <button type="submit">Subscribe</button>
+  </form>
+
+  <p id="success-msg">
+    &#x2665; &#x2665; &#x2665; Thank you for subscribing &#x2665; &#x2665; &#x2665;
+  </p>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="socials">
+    <a href="https://www.youtube.com/@VelorasMusic" target="_blank"><img src="youtube.svg" alt="YouTube"></a>
+    <a href="https://www.tiktok.com/@veloras_" target="_blank"><img src="tiktok.svg" alt="TikTok"></a>
+    <a href="https://www.instagram.com/velorasmusic" target="_blank"><img src="instagram.svg" alt="Instagram"></a>
+    <a href="https://open.spotify.com/artist/12IwDQIQyiaKq8hWHzaOsU" target="_blank"><img src="spotify.svg" alt="Spotify"></a>
+    <a href="https://www.facebook.com/people/veloras/61573358875312/" target="_blank"><img src="facebook.svg" alt="Facebook"></a>
+  </div>
+  <a href="mailto:music@veloras.art">music@veloras.art</a>
+  <br>
+  <a href="https://www.instagram.com/explore/tags/velorasmusic/" target="_blank">#VelorasMusic</a>
+</footer>
+
+<div class="piano-divider">
+  <img src="piano_roll.png" alt="Piano roll divider">
+</div>
+
+</div>
+
+<div id="recaptcha-container"></div>
+
+<script>
+const form = document.getElementById('subscribe-form');
+const successMsg = document.getElementById('success-msg');
+const button = form.querySelector("button");
+
+const scriptURL = 'https://script.google.com/macros/s/AKfycbzf1Qoz4yL6gMAulP9gB6Cuog1Enq7dCV5V2FqDqs4kScaGZYJZydnUM81sdyzmqN5chw/exec';
+
+let recaptchaWidget;
+
+// Render invisible CAPTCHA manually
+window.onload = function () {
+  recaptchaWidget = grecaptcha.render('recaptcha-container', {
+    'sitekey': '6LfdbJAsAAAAAFfYGKUgpOJFnItFvVjmJGKMD9ZN',
+    'size': 'invisible',
+    'callback': onSubmit
+  });
+};
+
+form.addEventListener('submit', function(e){
+  e.preventDefault();
+
+  // ✅ Now HTML5 validation works
+  if (!form.checkValidity()) {
+    form.reportValidity();
+    return;
+  }
+
+  // Trigger CAPTCHA only if valid
+  grecaptcha.execute(recaptchaWidget);
+});
+
+function onSubmit(token) {
+  const email = form.email.value;
+
+  button.disabled = true;
+  button.innerText = "Sending...";
+
+  fetch(scriptURL, {
+    method: 'POST',
+    body: new URLSearchParams({
+      email,
+      'g-recaptcha-response': token
+    })
+  }).then(res => {
+    if(res.ok) {
+      successMsg.style.display = 'block';
+      successMsg.style.opacity = 1;
+      form.reset();
+    } else {
+      alert('Submission failed. Please try again.');
+    }
+  }).catch(err => {
+    alert('Error: ' + err.message);
+  }).finally(() => {
+    button.disabled = false;
+    button.innerText = "Subscribe";
+    grecaptcha.reset(recaptchaWidget);
+  });
+}
+
+/* ===========================
+   Veloras Slideshow
+   =========================== */
+
+const slideShow = [
+  {
+    image: "veloras-yt-thumb.png",
+    alt: "Cryptic Calls",
+    link: "https://www.youtube.com/watch?v=G3b_p3u9IKg"
+  },
+  {
+    image: "yt-thumb-spell.png",
+    alt: "Spell",
+    link: "https://www.youtube.com/watch?v=MnokXSH3wmU"
+  }
+];
+
+let currentSlide = 0;
+
+const slideImage = document.getElementById("slideshow-image");
+const slideLink = document.getElementById("slideshow-link");
+
+function showSlide(index) {
+  const slide = slideShow[index];
+
+  slideImage.src = "slideshow/" + slide.image;
+  slideImage.alt = slide.alt;
+  slideLink.href = slide.link;
+}
+
+function nextSlide() {
+  slideImage.style.opacity = 0;
+
+  setTimeout(() => {
+    currentSlide = (currentSlide + 1) % slideShow.length;
+    showSlide(currentSlide);
+    slideImage.style.opacity = 1;
+  }, 800);
+}
+
+showSlide(currentSlide);
+
+let slideTimer = setInterval(nextSlide, 5000);
+
+slideImage.addEventListener("mouseenter", () => {
+  clearInterval(slideTimer);
+});
+
+slideImage.addEventListener("mouseleave", () => {
+  slideTimer = setInterval(nextSlide, 5000);
+});
+  
+</script>
+
+</body>
+</html>
